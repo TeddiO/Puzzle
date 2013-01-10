@@ -1,3 +1,9 @@
+/*
+	This file just tracks and controls the default settings for the map. 
+	Also, if the map is olde, this should hopefully allow for some minor compatability
+	For per-map compat. , check the 'maps' folder. 	
+*/
+
 local MapSettings={}
 
 function GetMapSetting(strSetting)
@@ -10,13 +16,6 @@ local function LoadSettings(e,k,v)
 	end
 end
 hook.Add("EntityKeyValue","LoadSettings",LoadSettings)
-
-concommand.Add("getsettings",function() for k,v in pairs(ents.GetAll()) do
-	if v:GetClass() == "puz_settings" then
-		PrintTable(MapSettings)
-	end
-end
-end)
 
 local function DefaultSettings()
 	MapSettings["walkspeed"]=250
