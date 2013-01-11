@@ -17,7 +17,7 @@ function ENT:StartTouch(e)
 end
 
 local function LoadSpeed(e,k,v)
-	if e:GetClass() == "puz_speed" then
+	if e:GetClass() == "puz_runspeed" then
 		if k == "speed" then 
 			e.speed = v
 		end

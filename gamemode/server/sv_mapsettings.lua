@@ -4,6 +4,7 @@
 	For per-map compat. , check the 'maps' folder. 	
 
 	Oh, and these won't provide "forever" enabled / disbled stuff. If a mapper places the appropriate brush in the map, then it will allow for it to be enabled.
+	
 */
 
 local MapSettings={}
@@ -27,6 +28,13 @@ local function LoadSettings(e,k,v)
 	end
 end
 hook.Add("EntityKeyValue","LoadSettings",LoadSettings)
+
+
+function GM:GetFallDamage(ply, numSpeed )
+	if !util.tobool(tonumber(MapSettings["falldamage"])) then return 0 end
+	return (numSpeed-580)*(100/(1024-580))
+end
+	
 	
 local function CheckSettingsExist()
 	for _, ent in pairs(ents.GetAll()) do
