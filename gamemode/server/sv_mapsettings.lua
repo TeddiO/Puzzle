@@ -2,6 +2,8 @@
 	This file just tracks and controls the default settings for the map. 
 	Also, if the map is olde, this should hopefully allow for some minor compatability
 	For per-map compat. , check the 'maps' folder. 	
+
+	Oh, and these won't provide "forever" enabled / disbled stuff. If a mapper places the appropriate brush in the map, then it will allow for it to be enabled.
 */
 
 local MapSettings={}
@@ -21,11 +23,12 @@ local function DefaultSettings()
 	MapSettings["walkspeed"]=250
 	MapSettings["crouchspeed"]=210
 	MapSettings["sprintspeed"]=280
-	MapSettings["sprintenable"]=1
+	MapSettings["sprintenable"]=0
 	MapSettings["flashlight"]=0
 	MapSettings["skips"]=3
 	MapSettings["falldamage"]=1
 	MapSettings["crowbar"]=1
+	MapSettings["jumppower"]=200
 end
 	
 local function CheckSettingsExist()
