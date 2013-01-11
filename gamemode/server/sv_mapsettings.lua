@@ -7,6 +7,15 @@
 */
 
 local MapSettings={}
+MapSettings["walkspeed"]=250
+MapSettings["crouchspeed"]=210
+MapSettings["sprintspeed"]=280
+MapSettings["sprintenable"]=0
+MapSettings["flashlight"]=0
+MapSettings["skips"]=3
+MapSettings["falldamage"]=1
+MapSettings["crowbar"]=1
+MapSettings["jumppower"]=200
 
 function GetMapSetting(strSetting)
 	return MapSettings[strSetting] || 0
@@ -18,18 +27,6 @@ local function LoadSettings(e,k,v)
 	end
 end
 hook.Add("EntityKeyValue","LoadSettings",LoadSettings)
-
-local function DefaultSettings()
-	MapSettings["walkspeed"]=250
-	MapSettings["crouchspeed"]=210
-	MapSettings["sprintspeed"]=280
-	MapSettings["sprintenable"]=0
-	MapSettings["flashlight"]=0
-	MapSettings["skips"]=3
-	MapSettings["falldamage"]=1
-	MapSettings["crowbar"]=1
-	MapSettings["jumppower"]=200
-end
 	
 local function CheckSettingsExist()
 	for _, ent in pairs(ents.GetAll()) do
@@ -41,9 +38,7 @@ local function CheckSettingsExist()
 	end
 
 	ErrorNoHalt("Puzzle: Warning! No settings entity exists for this map!\n")
-	ErrorNoHalt("Puzzle: Defaulting to default gamemode settings")
-
-	DefaultSettings()
+	ErrorNoHalt("Puzzle: All settings will be default!")
 	hook.Remove("InitPostEntity","CheckForSettings")
 	hook.Remove("EntityKeyValue","LoadSettings")
 

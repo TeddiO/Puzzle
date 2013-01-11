@@ -10,4 +10,4 @@ local function GetCheckpointNumber(e,k,v)
 		end
 	end
 end
-hook.Add("EntityKeyValue","LoadSettings",GetCheckpointNumber)
+hook.Add("EntityKeyValue","GetCheckpointIDs",GetCheckpointNumber)

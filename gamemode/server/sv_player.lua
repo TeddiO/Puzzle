@@ -7,6 +7,7 @@ local tonumber = tonumber
 local function InitialPlayerSettings(ply)
 	ply:AllowFlashlight(util.tobool(tonumber(GetMapSetting("flashlight"))))
 	ply.MaxSkips = GetMapSetting("skips")
+	ply.Skips = GetMapSetting("skips")
 end
 
 

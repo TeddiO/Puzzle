@@ -9,9 +9,18 @@ end
 function ENT:StartTouch(e)
 	if !e:IsPlayer() then return end
 
-	if self.type == "reset" then
-		e:SetWalkSpeed(GetMapSetting(walkspeed))
+	if self.speed == "reset" then
+		e:SetWalkSpeed(tonumber(GetMapSetting("walkspeed")))
 	else
-		e:SetWalkSpeed(self.speed)
+		e:SetWalkSpeed(tonumber(self.speed))
 	end
 end
+
+local function LoadSpeed(e,k,v)
+	if e:GetClass() == "puz_speed" then
+		if k == "speed" then 
+			e.speed = v
+		end
+	end
+end
+hook.Add("EntityKeyValue","LoadSpeedSettings",LoadSpeed)
