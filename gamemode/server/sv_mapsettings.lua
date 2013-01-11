@@ -4,7 +4,7 @@
 	For per-map compat. , check the 'maps' folder. 	
 
 	Oh, and these won't provide "forever" enabled / disbled stuff. If a mapper places the appropriate brush in the map, then it will allow for it to be enabled.
-	
+
 */
 
 local MapSettings={}
@@ -31,8 +31,10 @@ hook.Add("EntityKeyValue","LoadSettings",LoadSettings)
 
 
 function GM:GetFallDamage(ply, numSpeed )
-	if !util.tobool(tonumber(MapSettings["falldamage"])) then return 0 end
-	return (numSpeed-580)*(100/(1024-580))
+	if !ply.ShouldTakeFallDamage then return 0 end
+	if !util.tobool(tonumber(MapSettings["falldamage"])) then return 0 else
+ 		return (numSpeed-580)*(100/(1024-580))
+	end
 end
 	
 	
@@ -49,6 +51,16 @@ local function CheckSettingsExist()
 	ErrorNoHalt("Puzzle: All settings will be default!")
 	hook.Remove("InitPostEntity","CheckForSettings")
 	hook.Remove("EntityKeyValue","LoadSettings")
-
 end
 hook.Add("InitPostEntity","CheckForSettings",CheckSettingsExist)
+
+//Just clean up the hooks, there's no need for them to exist post-init and it's just bloat. 
+local function CleanupIPEHooks()
+	hook.Remove("EntityKeyValue","LoadSpeedSettings")
+	hook.Remove("EntityKeyValue","LoadSprintSettings")
+	hook.Remove("EntityKeyValue","LoadJumpSettings")
+	hook.Remove("EntityKeyValue","LoadFlashlightSettings")
+	hook.Remove("EntityKeyValue","LoadFallSettings")
+	hook.Remove("InitPostEntity","CleanupIPEHooks")
+end
+hook.Add("InitPostEntity","CleanupIPEHooks",CleanupIPEHooks)
