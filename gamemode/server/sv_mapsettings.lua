@@ -62,5 +62,6 @@ local function CleanupIPEHooks()
 	hook.Remove("EntityKeyValue","LoadFlashlightSettings")
 	hook.Remove("EntityKeyValue","LoadFallSettings")
 	hook.Remove("InitPostEntity","CleanupIPEHooks")
+	hook.Remove("EntityKeyValue","LoadSpawnTargets")
 end
 hook.Add("InitPostEntity","CleanupIPEHooks",CleanupIPEHooks)
