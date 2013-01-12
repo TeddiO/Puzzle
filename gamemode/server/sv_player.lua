@@ -16,6 +16,9 @@ local function InitialPlayerSettings(ply)
 	ply.MaxSkips = GetMapSetting("skips")
 	ply.Skips = GetMapSetting("skips")
 	ply.ShouldTakeFallDamage = GetMapSetting("falldamage")
+
+	ply:SetCheckpoint(1)
+	ply.InitialSpawn = true
 end
 
 
@@ -31,5 +34,29 @@ function GM:PlayerSpawn(ply)
 	if util.tobool(tonumber(GetMapSetting("gravgun"))) then
 		ply:Give("weapon_physcannon")
 	end
+
+	if !ply.InitialSpawn then 
+		ply:MoveToCheckpoint(ply:GetCurrentCheckpoint())
+	end
+	
+	ply.InitialSpawn = false
+
+end
+
+
+function GM:DoPlayerDeath(ply,atk,dmginfo)
+
+end
+
+function GM:PlayerDeath(ply)
+	ply:Spawn()
+end
+
+function GM:PlayerPassedCheckpoint(ply,numCheckpoint)
+	ply:ChatPrint("Congradulations on getting to checkpoint "..numCheckpoint.."!")
 end
 	
+	
+function GM:PlayerFinishedLevel(ply)
+	ply:ChatPrint("Congradulations on finishing the level!")
+end

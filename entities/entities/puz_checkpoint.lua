@@ -8,6 +8,12 @@ end
 
 function ENT:StartTouch(e)
 	if !e:IsPlayer() then return end
-	e:SetCheckpoint(self.PointNumber)
-	e:PrintMessage("Congradulations on getting to "..self.PointNumber.."!")
+	if e:GetCurrentCheckpoint() == self.PointNumber then return end
+
+	if self.PointNumber != "final" || self.PointNumber != "finish" then
+		e:SetCheckpoint(self.PointNumber)
+		GM:PlayerPassedCheckpoint(e, self.PointNumber)
+	else
+		GM:PlayerFinishedLevel(e)
+	end
 end

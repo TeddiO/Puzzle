@@ -5,7 +5,29 @@ function pm:SetCheckpoint(numCheckpoint)
 	self.Checkpoint = numCheckpoint
 end
 
-function pm:GetCheckpoint()
+function pm:MoveToCheckpoint(numCheckpoint)
+	self:SetPos(GetCheckpointSpawn(numCheckpoint))
+end
+
+function pm:SetCompletedCheckpoint(numCheckpoint)
+	self.CompletedCheckpoints[numCheckpoint] = true
+end
+
+function pm:HasCompletedCheckpoint(numCheckpoint)
+	return self.CompletedCheckpoints[numCheckpoint] == true
+end
+
+function pm:GetCompletedCheckpoints()
+	local tbl = {}
+	for stage, complete in pairs(self.CompletedCheckpoints) do
+		if complete == true then
+			tbl[#tbl+1] = stage
+		end
+	end
+	return tbl
+end
+	
+function pm:GetCurrentCheckpoint()
 	return self.Checkpoint
 end
 

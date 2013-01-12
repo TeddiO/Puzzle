@@ -1,5 +1,4 @@
 "Puzzle"
 {
-	"base" "bbase"
 	"title" "Puzzle"
 }
