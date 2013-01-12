@@ -14,10 +14,10 @@ function ENT:StartTouch(e)
 		if !e:HasCompletedCheckpoint(self.PointNumber) then
 			e:SetCheckpoint(self.PointNumber)
 			e:SetCompletedCheckpoint(self.PointNumber)
-			GM:PlayerPassedCheckpoint(e, self.PointNumber)
+			GAMEMODE:PlayerPassedCheckpoint(e, self.PointNumber)
 		end
 	else
-		GM:PlayerFinishedLevel(e)
+		GAMEMODE:PlayerFinishedLevel(e)
 		e:SetCompletedCheckpoint(e)
 	end
 end

@@ -24,6 +24,11 @@ end
 
 function GM:PlayerInitialSpawn(ply)
 	InitialPlayerSettings(ply)
+
+	ply.Attempts={}
+	ply.CompletedCheckpoints = {}
+	ply:SetCompletedCheckpoint(1)
+
 end
 
 function GM:PlayerSpawn(ply)
