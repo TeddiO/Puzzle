@@ -49,7 +49,7 @@ function GM:DoPlayerDeath(ply,atk,dmginfo)
 end
 
 function GM:PlayerDeath(ply)
-	ply:Spawn()
+
 end
 
 function GM:PlayerPassedCheckpoint(ply,numCheckpoint)
