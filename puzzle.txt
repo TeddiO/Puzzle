@@ -1,4 +1,7 @@
 "Puzzle"
 {
 	"title" "Puzzle"
+	"base" "base"
+	"workshopid" "144025605"
+	"menusystem" "1"
 }

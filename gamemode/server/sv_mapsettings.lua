@@ -17,7 +17,7 @@ MapSettings["skips"]=3
 MapSettings["falldamage"]=1
 MapSettings["crowbar"]=1
 MapSettings["jumppower"]=200
-MapSettigns["gravgun"] = 0
+MapSettings["gravgun"] = 0
 
 function GetMapSetting(strSetting)
 	return MapSettings[strSetting] || 0
