@@ -1,0 +1,57 @@
+//FGD for the Puzzle gamemode on Garrysmod (2013).
+
+
+@include "base.fgd"
+
+
+@SolidClass = puz_checkpoint : "This is the checkpoint brush which registers when players hit it."
+[
+	number(string) : "Checkpoint ID" : 1 : "The Checkpoint ID" //Bit backwards here, but oh well :V
+]
+
+@PointClass = puz_checkpointspawn : "This is the point entity that dictates where a player spawns for a specific checkpoint"
+[
+	number(string) : "Checkpoint ID" : 1 : "Checkpoints typically use numerical characters for each checkpoint, apart from the final checkpoint which can be 'final' or 'finish'."
+]
+
+@SolidClass = puz_falldamage : "The falldamage brush. When players touch this it dictates whether or not they should receive falldamage. 1 for on, 0 for off. "
+[
+	enabled(string) : "Falldamage" : 1 : "Is falldamage enabled? 1 for on, 0 for off. "
+]
+
+@SolidClass = puz_flashlight : "When players touch this, it allows the flashlight function to be forced off or on. "
+[
+	enabled(string) : "On / Off" : 0 : "Is the flashlight enabled? 1 for on, 0 for off. "
+]
+
+@SolidClass = puz_sprintspeed
+[
+	speed(string) : "Speed" : 280 : "Speed the player sprints at. Default is 280."
+]
+
+@SolidClass = puz_runspeed
+[
+	speed(string) : "Speed" : 210 : "Speed the player runs at. Default is 210."
+]
+
+@SolidClass = puz_jump
+[
+	power(string) : "Power" : 200 : "How many units the player can jump."
+]
+
+@PointClass = puz_settings : "This is the point entity that dictates where a player spawns for a specific checkpoint"
+[
+	walkspeed(string) : "Running speed" : 250 : "Sets the default normal movement speed in the map in hammer units. "
+	crouchspeed(string) : "Crouched speed" : 210 : "Sets the default crouching speed in hammer units."
+	sprintenabled(string) : "Enable Sprint" : 0 : "Sets whether or not sprinting is actually enabled."
+	sprintspeed(string) : "Sprint Speed" : 280 : "Sets the default sprint speed in hammer units."
+	flashlight(string) : "Flashlight Enabled" : 0 : "0 is off, 1 is on. "
+	skips(string) : "Max skips allowed" : 3 : "Maximum skips allowed in the map"
+	falldamage(string) : "Falldamage" : 1 : "Enable or disable falldamage in the map"
+	crowbar(string) : "Crowbars enabled" : 0 : "Are crowbars given to the player on spawn?"
+	jumppower(string) : "Jumping power" : 200 : "Sets the jumping power in hammer units."
+	gravgun(string) : "Grav Gun Enabled" : 0 : "Is the player given a gravity gun upon spawn?"
+]
+
+
+
